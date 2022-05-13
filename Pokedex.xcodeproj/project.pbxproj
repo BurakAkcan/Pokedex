@@ -12,6 +12,11 @@
 		45002CDA282E7C7500EA266A /* PokemonSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45002CD9282E7C7500EA266A /* PokemonSearchViewController.swift */; };
 		45002CDF282E7C7700EA266A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45002CDE282E7C7700EA266A /* Assets.xcassets */; };
 		45002CE2282E7C7700EA266A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45002CE0282E7C7700EA266A /* LaunchScreen.storyboard */; };
+		452212DB282E9D24000232BE /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452212DA282E9D23000232BE /* NetworkManager.swift */; };
+		452212DE282E9D45000232BE /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452212DD282E9D45000232BE /* HTTPMethod.swift */; };
+		452212E0282E9F03000232BE /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452212DF282E9F03000232BE /* Endpoint.swift */; };
+		452212E2282EB7B8000232BE /* PokemonEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452212E1282EB7B8000232BE /* PokemonEndpoint.swift */; };
+		452212E6282EDEFD000232BE /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452212E5282EDEFD000232BE /* ServiceError.swift */; };
 		4E52169E168C59407E813C61 /* Pods_Pokedex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95C5F2D5237EBA1B99ED484F /* Pods_Pokedex.framework */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +28,11 @@
 		45002CDE282E7C7700EA266A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		45002CE1282E7C7700EA266A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		45002CE3282E7C7700EA266A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		452212DA282E9D23000232BE /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		452212DD282E9D45000232BE /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		452212DF282E9F03000232BE /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		452212E1282EB7B8000232BE /* PokemonEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonEndpoint.swift; sourceTree = "<group>"; };
+		452212E5282EDEFD000232BE /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		95C5F2D5237EBA1B99ED484F /* Pods_Pokedex.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pokedex.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A99A3EFBBC713AAD3944C295 /* Pods-Pokedex.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokedex.debug.xcconfig"; path = "Target Support Files/Pods-Pokedex/Pods-Pokedex.debug.xcconfig"; sourceTree = "<group>"; };
 		BCD137DCBF142FEDE7AA78F7 /* Pods-Pokedex.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokedex.release.xcconfig"; path = "Target Support Files/Pods-Pokedex/Pods-Pokedex.release.xcconfig"; sourceTree = "<group>"; };
@@ -63,12 +73,41 @@
 			children = (
 				45002CD5282E7C7500EA266A /* AppDelegate.swift */,
 				45002CD7282E7C7500EA266A /* SceneDelegate.swift */,
-				45002CD9282E7C7500EA266A /* PokemonSearchViewController.swift */,
+				452212D9282E9BDF000232BE /* Controllers */,
 				45002CDE282E7C7700EA266A /* Assets.xcassets */,
 				45002CE0282E7C7700EA266A /* LaunchScreen.storyboard */,
 				45002CE3282E7C7700EA266A /* Info.plist */,
+				452212DC282E9D27000232BE /* Networking */,
 			);
 			path = Pokedex;
+			sourceTree = "<group>";
+		};
+		452212D9282E9BDF000232BE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				45002CD9282E7C7500EA266A /* PokemonSearchViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		452212DC282E9D27000232BE /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				452212DA282E9D23000232BE /* NetworkManager.swift */,
+				452212DD282E9D45000232BE /* HTTPMethod.swift */,
+				452212DF282E9F03000232BE /* Endpoint.swift */,
+				452212E7282EEB17000232BE /* Endpoints */,
+				452212E5282EDEFD000232BE /* ServiceError.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		452212E7282EEB17000232BE /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				452212E1282EB7B8000232BE /* PokemonEndpoint.swift */,
+			);
+			path = Endpoints;
 			sourceTree = "<group>";
 		};
 		E10ABBC8C48672FBD32B3E49 /* Frameworks */ = {
@@ -202,8 +241,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				452212E2282EB7B8000232BE /* PokemonEndpoint.swift in Sources */,
+				452212DB282E9D24000232BE /* NetworkManager.swift in Sources */,
 				45002CDA282E7C7500EA266A /* PokemonSearchViewController.swift in Sources */,
 				45002CD6282E7C7500EA266A /* AppDelegate.swift in Sources */,
+				452212DE282E9D45000232BE /* HTTPMethod.swift in Sources */,
+				452212E6282EDEFD000232BE /* ServiceError.swift in Sources */,
+				452212E0282E9F03000232BE /* Endpoint.swift in Sources */,
 				45002CD8282E7C7500EA266A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
