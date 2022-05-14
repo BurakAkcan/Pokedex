@@ -18,23 +18,15 @@ class PokemonListViewController: UIViewController {
         super.viewDidLoad()
         
         configureViewController()
+        
         loadPokemonCollectionView()
         loadPokemonCollectionViewConstraints()
-        
-        SVProgressHUD.show()
     }
 }
 
 // MARK: - Configurations
 extension PokemonListViewController {
     func configureViewController() {
-        // request pokemon details
-        PokemonManager.shared.getPokemonDetails { pokemonDetails in
-            if let pokemonDetails = pokemonDetails {
-                self.pokemons = pokemonDetails
-                self.pokemonCollectionView.reloadData()
-            }
-        }
         // view configurations
         view.backgroundColor = .white
         
@@ -44,6 +36,18 @@ extension PokemonListViewController {
         // configurations for progress hud
         SVProgressHUD.setDefaultMaskType(.custom)
         SVProgressHUD.setBackgroundLayerColor(Constants.ProgressHUD.backgroundLayerColor)
+        
+        // request pokemon details
+        SVProgressHUD.show()
+        
+        PokemonManager.shared.getPokemonDetails { pokemonDetails in
+            if let pokemonDetails = pokemonDetails {
+                self.pokemons = pokemonDetails
+                self.pokemonCollectionView.reloadData()
+            }
+            
+            SVProgressHUD.dismiss()
+        }
     }
 }
 
