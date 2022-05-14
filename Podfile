@@ -6,4 +6,5 @@ target 'Pokedex' do
 
   pod 'SnapKit', '~> 5.6.0'
   pod 'SDWebImage', '~> 5.0'
+  pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
 end

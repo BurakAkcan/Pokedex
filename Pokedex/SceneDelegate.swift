@@ -17,5 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let navigationController = UINavigationController(rootViewController: PokemonSearchViewController())
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window = window
     }
 }

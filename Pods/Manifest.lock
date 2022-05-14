@@ -3,20 +3,34 @@ PODS:
     - SDWebImage/Core (= 5.12.5)
   - SDWebImage/Core (5.12.5)
   - SnapKit (5.6.0)
+  - SVProgressHUD (2.2.6):
+    - SVProgressHUD/Core (= 2.2.6)
+  - SVProgressHUD/Core (2.2.6)
 
 DEPENDENCIES:
   - SDWebImage (~> 5.0)
   - SnapKit (~> 5.6.0)
+  - SVProgressHUD (from `https://github.com/SVProgressHUD/SVProgressHUD.git`)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - SDWebImage
     - SnapKit
 
+EXTERNAL SOURCES:
+  SVProgressHUD:
+    :git: https://github.com/SVProgressHUD/SVProgressHUD.git
+
+CHECKOUT OPTIONS:
+  SVProgressHUD:
+    :commit: de1d4dba816a19454329031156b8788692bcfa2c
+    :git: https://github.com/SVProgressHUD/SVProgressHUD.git
+
 SPEC CHECKSUMS:
   SDWebImage: 0905f1b7760fc8ac4198cae0036600d67478751e
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  SVProgressHUD: de812b4f0e1d65358f0064416473174ae619843f
 
-PODFILE CHECKSUM: 80477a101360cfb8cd14d41a0df540f89749f1bd
+PODFILE CHECKSUM: f2e9655f17666fb76e41ef369251a7fa410eb87d
 
 COCOAPODS: 1.11.2
