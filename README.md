@@ -1,6 +1,6 @@
 # Pokedex App
 
-<img width="856" alt="app_screenshot" src="https://user-images.githubusercontent.com/22526834/168495035-a6a5feb2-7a47-45de-9ece-53ba57fd7748.png">
+<img width="909" alt="app_screenshot" src="https://user-images.githubusercontent.com/22526834/168496591-88654380-ed2b-49b4-a9b5-b79c8fd4b621.png">
 
 An iOS application that shows pokemons and some information about them.  
 
