@@ -80,6 +80,7 @@ extension PokemonListViewController {
         pokemonCollectionView.dataSource = self
         pokemonCollectionView.register(PokemonCollectionViewCell.self, forCellWithReuseIdentifier: PokemonCollectionViewCell.Constants.cellIdentifier)
         pokemonCollectionView.alwaysBounceVertical = true
+        pokemonCollectionView.keyboardDismissMode = .onDrag
         
         view.addSubview(pokemonCollectionView)
     }
