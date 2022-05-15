@@ -12,12 +12,22 @@ import SVProgressHUD
 class PokemonListViewController: UIViewController {
     
     private var pokemonCollectionView: UICollectionView!
+    private var searchController: UISearchController!
+    
     private var pokemons: [PokemonDetail] = []
+    
+    private var filteredPokemons: [PokemonDetail] = []
+    
+    /// determines whether the user is currently searching for an pokemon or not
+    private var isInSearchMode: Bool {
+        searchController.isActive && !(searchController.searchBar.text?.isEmpty ?? true)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureViewController()
+        configureSearchController()
         
         loadPokemonCollectionView()
         loadPokemonCollectionViewConstraints()
@@ -29,9 +39,11 @@ extension PokemonListViewController {
     func configureViewController() {
         // view configurations
         view.backgroundColor = .white
+        definesPresentationContext = true
         
         // navigation bar configurations
         title = Constants.NavigationBar.navigationTitle
+        navigationItem.hidesSearchBarWhenScrolling = true
         
         // configurations for progress hud
         SVProgressHUD.setDefaultMaskType(.custom)
@@ -48,6 +60,13 @@ extension PokemonListViewController {
             
             SVProgressHUD.dismiss()
         }
+    }
+    
+    func configureSearchController() {
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        navigationItem.searchController = searchController
     }
 }
 
@@ -78,7 +97,7 @@ extension PokemonListViewController {
 // MARK: - CollectionView Data Source
 extension PokemonListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        pokemons.count
+        isInSearchMode ? filteredPokemons.count : pokemons.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -86,7 +105,7 @@ extension PokemonListViewController: UICollectionViewDataSource {
                                                             for: indexPath) as? PokemonCollectionViewCell
         else { return UICollectionViewCell() }
         
-        let pokemon = pokemons[indexPath.item]
+        let pokemon = isInSearchMode ? filteredPokemons[indexPath.item] : pokemons[indexPath.item]
         let imageURL = URL(string: pokemon.sprites.frontImageURL)
         cell.setContent(name: pokemon.name, imageURL: imageURL)
         
@@ -118,6 +137,16 @@ extension PokemonListViewController: UICollectionViewDelegateFlowLayout {
         let itemWidth: CGFloat = (collectionView.bounds.width - totalSpacing) / Constants.PokemonCollectionView.numberOfItemsInARow
         
         return CGSize(width: itemWidth, height: itemWidth)
+    }
+}
+
+// MARK: - UISearchResultsUpdating
+extension PokemonListViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let searchText = searchController.searchBar.text else { return }
+                
+        filteredPokemons = pokemons.filter { $0.name.lowercased().hasPrefix(searchText.lowercased()) }
+        pokemonCollectionView.reloadData()
     }
 }
 
