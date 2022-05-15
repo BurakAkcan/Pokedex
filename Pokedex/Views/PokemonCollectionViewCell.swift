@@ -11,6 +11,7 @@ import SDWebImage
 class PokemonCollectionViewCell: UICollectionViewCell {
     private var spriteImageView: UIImageView!
     private var nameLabel: UILabel!
+    private var idLabel: UILabel!
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -26,9 +27,11 @@ class PokemonCollectionViewCell: UICollectionViewCell {
         
         loadSpriteImageView()
         loadNameLabel()
+        loadIdLabel()
         
         loadSpriteImageViewConstraints()
         loadNameLabelConstraints()
+        loadIdLabelConstraints()
     }
 }
 
@@ -42,10 +45,12 @@ extension PokemonCollectionViewCell {
     
     /// sets pokemon name and image to the appropriate views
     /// - Parameters:
+    ///   - id: id of the pokemon
     ///   - name: name of the pokemon
     ///   - imageURL: URL that contains the image of the pokemon
-    func setContent(name: String, imageURL: URL?) {
+    func setContent(id: Int, name: String, imageURL: URL?) {
         spriteImageView.sd_setImage(with: imageURL)
+        idLabel.text = "#\(id)"
         nameLabel.text = name
     }
 }
@@ -63,6 +68,13 @@ extension PokemonCollectionViewCell {
         nameLabel.font = Constants.NameLabel.font
         addSubview(nameLabel)
     }
+    
+    func loadIdLabel() {
+        idLabel = UILabel()
+        idLabel.textColor = Constants.IdLabel.color
+        idLabel.font = Constants.IdLabel.font
+        addSubview(idLabel)
+    }
 }
 
 // MARK: - View Constraints Loaders
@@ -78,8 +90,14 @@ extension PokemonCollectionViewCell {
     
     func loadNameLabelConstraints() {
         nameLabel.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(Constants.NameLabel.bottomOffset)
+            make.top.equalToSuperview().offset(Constants.NameLabel.topOffset)
             make.centerX.equalToSuperview()
+        }
+    }
+    
+    func loadIdLabelConstraints() {
+        idLabel.snp.makeConstraints { make in
+            make.trailing.bottom.equalToSuperview().offset(Constants.IdLabel.offset)
         }
     }
 }
@@ -94,13 +112,19 @@ extension PokemonCollectionViewCell {
         static let backgroundColor: UIColor = .orange
         
         enum SpriteImageView {
-            static let offset: CGFloat = 20
+            static let offset: CGFloat = 30
         }
         
         enum NameLabel {
-            static let bottomOffset: CGFloat = -10
+            static let topOffset: CGFloat = 10
             static let color: UIColor = .white
             static let font: UIFont = .boldSystemFont(ofSize: 20)
+        }
+        
+        enum IdLabel {
+            static let offset: CGFloat = -10
+            static let color: UIColor = .white
+            static let font: UIFont = .boldSystemFont(ofSize: 16)
         }
     }
 }

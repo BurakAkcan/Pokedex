@@ -108,7 +108,7 @@ extension PokemonListViewController: UICollectionViewDataSource {
         
         let pokemon = isInSearchMode ? filteredPokemons[indexPath.item] : pokemons[indexPath.item]
         let imageURL = URL(string: pokemon.sprites.homeImageURL)
-        cell.setContent(name: pokemon.name, imageURL: imageURL)
+        cell.setContent(id: pokemon.id, name: pokemon.name.capitalized, imageURL: imageURL)
         
         return cell
     }
