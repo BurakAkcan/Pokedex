@@ -107,7 +107,7 @@ extension PokemonListViewController: UICollectionViewDataSource {
         else { return UICollectionViewCell() }
         
         let pokemon = isInSearchMode ? filteredPokemons[indexPath.item] : pokemons[indexPath.item]
-        let imageURL = URL(string: pokemon.sprites.frontImageURL)
+        let imageURL = URL(string: pokemon.sprites.homeImageURL)
         cell.setContent(name: pokemon.name, imageURL: imageURL)
         
         return cell
@@ -117,7 +117,12 @@ extension PokemonListViewController: UICollectionViewDataSource {
 // MARK: - CollectionView Delegate
 extension PokemonListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedPokemon = isInSearchMode ? filteredPokemons[indexPath.item] : pokemons[indexPath.item]
         
+        let detailViewController = PokemonDetailViewController()
+        detailViewController.pokemon = selectedPokemon
+        
+        navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
 

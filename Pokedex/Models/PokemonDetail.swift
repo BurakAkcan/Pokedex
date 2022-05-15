@@ -32,6 +32,9 @@ struct PokemonDetail: Decodable {
     /// sprites of the pokemon containing image URLs
     let sprites: PokemonSprites
     
+    /// stats of the pokemon
+    let stats: [PokemonStat]
+    
     enum CodingKeys: String, CodingKey {
         case id
         case name
@@ -39,5 +42,6 @@ struct PokemonDetail: Decodable {
         case height
         case weight
         case sprites
+        case stats
     }
 }
