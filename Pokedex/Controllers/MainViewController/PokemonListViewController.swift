@@ -38,7 +38,7 @@ class PokemonListViewController: UIViewController {
 extension PokemonListViewController {
     func configureViewController() {
         // view configurations
-        view.backgroundColor = .white
+        view.backgroundColor = Constants.backgroundColor
         definesPresentationContext = true
         
         // navigation bar configurations
@@ -161,6 +161,8 @@ extension PokemonListViewController {
     
     /// contains the constant values used in the view controller
     enum Constants {
+        static let backgroundColor = UIColor(named: "primaryColor") ?? .white
+        
         enum NavigationBar {
             static let navigationTitle = "Pokedex"
         }

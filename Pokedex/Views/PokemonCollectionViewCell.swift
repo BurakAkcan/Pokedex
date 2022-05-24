@@ -109,7 +109,7 @@ extension PokemonCollectionViewCell {
     enum Constants {
         static let cellIdentifier = "pokemonCollectionViewCell"
         static let cornerRadius: CGFloat = 10
-        static let backgroundColor: UIColor = .orange
+        static let backgroundColor = UIColor(named: "mainOrange") ?? UIColor.orange
         
         enum SpriteImageView {
             static let offset: CGFloat = 30
@@ -117,13 +117,13 @@ extension PokemonCollectionViewCell {
         
         enum NameLabel {
             static let topOffset: CGFloat = 10
-            static let color: UIColor = .white
+            static let color = UIColor(named: "primaryColor") ?? UIColor.white
             static let font: UIFont = .boldSystemFont(ofSize: 20)
         }
         
         enum IdLabel {
             static let offset: CGFloat = -10
-            static let color: UIColor = .white
+            static let color = UIColor(named: "primaryColor") ?? UIColor.white
             static let font: UIFont = .boldSystemFont(ofSize: 16)
         }
     }

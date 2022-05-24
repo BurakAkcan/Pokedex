@@ -22,6 +22,8 @@ class PokemonStatTableViewCell: UITableViewCell {
     }
     
     func customInit() {
+        contentView.backgroundColor = Constants.backgroundColor
+        
         loadNameLabel()
         loadValueLabel()
         
@@ -77,6 +79,7 @@ extension PokemonStatTableViewCell {
 extension PokemonStatTableViewCell {
     enum Constants {
         static let cellIdentifier = "PokemonStatTableViewCell"
+        static let backgroundColor = UIColor(named: "primaryColor") ?? UIColor.white
         static let offset: CGFloat = 30
     }
 }

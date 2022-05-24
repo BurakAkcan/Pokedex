@@ -78,6 +78,7 @@ extension PokemonDetailViewController {
     
     func loadStatsTableView() {
         statsTableView = UITableView()
+        statsTableView.backgroundColor = Constants.StatsTableView.backgroundColor
         statsTableView.dataSource = self
         statsTableView.register(PokemonStatTableViewCell.self, forCellReuseIdentifier: PokemonStatTableViewCell.Constants.cellIdentifier)
         statsTableView.allowsSelection = false
@@ -146,7 +147,7 @@ extension PokemonDetailViewController: UITableViewDataSource {
 // MARK: - Constants
 extension PokemonDetailViewController {
     enum Constants {
-        static let backgroundColor: UIColor = .orange
+        static let backgroundColor = UIColor(named: "mainOrange") ?? UIColor.orange
         
         enum IdLabel {
             static let font: UIFont = .boldSystemFont(ofSize: 25)
@@ -163,7 +164,7 @@ extension PokemonDetailViewController {
         }
         
         enum InfoContainer {
-            static let backgroundColor: UIColor = .white
+            static let backgroundColor = UIColor(named: "primaryColor") ?? UIColor.white
             static let cornerRadius: CGFloat = 20
             static let topOffset: CGFloat = -25
         }
@@ -171,6 +172,7 @@ extension PokemonDetailViewController {
         enum StatsTableView {
             static let rowHeight: CGFloat = 50
             static let topOffset: CGFloat = 20
+            static let backgroundColor = UIColor(named: "primaryColor") ?? UIColor.white
         }
     }
 }
